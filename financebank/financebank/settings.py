@@ -83,13 +83,14 @@ WSGI_APPLICATION = 'financebank.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'finansebank',
-        'USER': 'financebank',
+        'NAME': 'financebank',
+        'USER': 'finansebank',
         'PASSWORD': 'financebank',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 AUTH_USER_MODEL = 'users.CustomUser'
 # Password validation
