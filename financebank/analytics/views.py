@@ -2,6 +2,6 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Analytics
 
-class Analytics(ListView):
-    model = FinanceRecord
+class FinanceListView(ListView):
+    model = Analytics
     template_name = 'analytics/analytics_list.html'
