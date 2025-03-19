@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Analytics
 
-# Create your views here.
+class Analytics(ListView):
+    model = FinanceRecord
+    template_name = 'analytics/analytics_list.html'

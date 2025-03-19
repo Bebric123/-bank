@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import CustomUser
 
-# Create your views here.
+class FinanceListView(ListView):
+    model = CustomUser
+    template_name = 'users/users_list.html'
