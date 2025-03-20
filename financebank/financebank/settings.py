@@ -83,11 +83,14 @@ WSGI_APPLICATION = 'financebank.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'financebank',
-        'USER': 'finansebank',
+        'NAME': 'finansebank',
+        'USER': 'financebank',
         'PASSWORD': 'financebank',
         'HOST': 'localhost',
         'PORT': '5432',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        }
     }
 }
 
