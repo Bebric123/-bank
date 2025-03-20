@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Аналитика финансов</h2>
+
+<p><strong>Общий доход:</strong> {{ total_income }} руб.</p>
+<p><strong>Общие расходы:</strong> {{ total_expense }} руб.</p>
+
+<h3>Расходы по категориям</h3>
+<canvas id="expenseChart"></canvas>
+
+<h3>Рекомендации</h3>
+<ul>
+    {% for rec in recommendations %}
+        <li>{{ rec }}</li>
+    {% endfor %}
+</ul>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('expenseChart').getContext('2d');
+    var expenseChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: {{ category_labels|safe }},
+            datasets: [{
+                data: {{ category_values|safe }},
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800']
+            }]
+        }
+    });
+</script>
+{% endblock %}

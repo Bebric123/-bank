@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Ваши финансовые цели</h2>
+<a href="{% url 'create_goal' %}">Создать новую цель</a>
+
+<ul>
+    {% for goal in goals %}
+        <li>
+            <strong>{{ goal.title }}</strong> - {{ goal.current_amount }} из {{ goal.target_amount }} ({{ goal.progress|floatformat:2 }}%)
+            <br> Срок: {{ goal.deadline }}
+        </li>
+    {% empty %}
+        <p>У вас пока нет финансовых целей.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

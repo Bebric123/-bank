@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import FinanceListView
+from .views import analytics_view
 
 urlpatterns = [
-    path('', FinanceListView.as_view(), name='analytics_list'),
+    path("analytics/", analytics_view, name="analytics"),
 ]
