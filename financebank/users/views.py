@@ -8,12 +8,12 @@ from django.contrib.auth import get_user_model
 User = get_user_model()  # Используем кастомную модель пользователя
 
 def your_view_here(request):
-    return render(request, 'users/users_list.html')
+    return render(request, 'users/home.html')
 
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
-        return render(request, "users/users_list.html", {"form": form})
+        return render(request, "users/login.html", {"form": form})
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -23,10 +23,10 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('users_list')  # Перенаправление на главную страницу
+                return redirect('home')  # Перенаправление на главную страницу
             else:
                 messages.error(request, "Неверные учетные данные")
-        return render(request, "users/users_list.html", {"form": form})
+        return render(request, "users/login.html", {"form": form})
 
 class RegisterView(View):
     def get(self, request):
@@ -43,5 +43,5 @@ class RegisterView(View):
 
             user = form.save()
             login(request, user)
-            return redirect("users_list")
+            return redirect("home")
         return render(request, "users/register.html", {"form": form})

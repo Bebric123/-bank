@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.shortcuts import redirect
 
 def redirect_to_dashboard(request):
-    return redirect("users/")  # Перенаправление на главную страницу
+    return redirect("users/home")  # Перенаправление на главную страницу
 
 urlpatterns = [
     path("admin/", admin.site.urls),
