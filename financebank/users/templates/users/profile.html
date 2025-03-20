@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль пользователя</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="username">Имя пользователя:</label>
+    {{ user_form.username }}
+
+    <label for="email">Email:</label>
+    {{ user_form.email }}
+
+    <label for="avatar">Аватар:</label>
+    <img src="{{ request.user.profile.avatar.url }}" alt="Аватар" width="100">
+    {{ profile_form.avatar }}
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+
+{% endblock %}
