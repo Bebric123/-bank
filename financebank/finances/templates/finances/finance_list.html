@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Финансовый учет</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+
+<h3>История операций</h3>
+<button><a href="{% url 'finance_history' %}">ggg</a></button>
+<ul>
+    {% for transaction in transactions %}
+        <li>{{ transaction.date }} - {{ transaction.transaction_type }} - {{ transaction.amount }} - {{ transaction.category }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

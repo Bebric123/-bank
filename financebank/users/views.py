@@ -23,7 +23,7 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Перенаправление на главную страницу
+                return redirect('finance_list')  # Перенаправление на главную страницу
             else:
                 messages.error(request, "Неверные учетные данные")
         return render(request, "users/login.html", {"form": form})

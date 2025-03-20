@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>История операций</h2>
+
+<!-- Форма фильтрации -->
+<form method="get">
+    <label for="transaction_type">Тип операции:</label>
+    <select name="transaction_type">
+        <option value="">Все</option>
+        <option value="income">Доход</option>
+        <option value="expense">Расход</option>
+    </select>
+
+    <label for="category">Категория:</label>
+    <input type="text" name="category" placeholder="Введите категорию">
+
+    <label for="start_date">Дата (от):</label>
+    <input type="date" name="start_date">
+
+    <label for="end_date">Дата (до):</label>
+    <input type="date" name="end_date">
+
+    <button type="submit">Фильтровать</button>
+</form>
+
+<!-- Таблица с историей операций -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Тип</th>
+            <th>Категория</th>
+            <th>Сумма</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.transaction_date }}</td>
+            <td>{{ record.get_transaction_type_display }}</td>
+            <td>{{ record.category }}</td>
+            <td>{{ record.amount }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Нет записей</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

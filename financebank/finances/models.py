@@ -1,18 +1,20 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils import timezone
 
-# Create your models here.
+User = get_user_model()
+
 class FinanceRecord(models.Model):
-    INCOME = 'income'
-    EXPENSE = 'expense'
-    
     TYPE_CHOICES = [
-        (INCOME, 'Доход'),
-        (EXPENSE, 'Расход'),
+        ('income', 'Доход'),
+        ('expense', 'Расход'),
     ]
-    
-    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    category = models.CharField(max_length=50)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    transaction_type = models.CharField(max_length=7, choices=TYPE_CHOICES)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField(blank=True, null=True)
-    transaction_date = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.transaction_type}: {self.amount} ({self.category})"
