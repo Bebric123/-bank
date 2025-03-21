@@ -7,7 +7,10 @@
 <p><strong>Общие расходы:</strong> {{ total_expense }} руб.</p>
 
 <h3>Расходы по категориям</h3>
-<canvas id="expenseChart"></canvas>
+<div class="chart-container">
+    <canvas id="expenseChart"></canvas>
+</div>
+<canvas id="expenseChart" width="{{ chart_width }}" height="{{ chart_height }}"></canvas>
 
 <h3>Рекомендации</h3>
 <ul>
