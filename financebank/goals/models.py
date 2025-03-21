@@ -12,7 +12,9 @@ class FinancialGoal(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def progress(self):
-        return (self.current_amount / self.target_amount) * 100 if self.target_amount > 0 else 0
+        if self.target_amount == 0:
+            return 0
+        return round((self.saved_amount / self.target_amount) * 100, 2)
 
     def __str__(self):
-        return f"{self.title} - {self.current_amount}/{self.target_amount}"
+        return f"{self.name} - {self.progress_percentage()}% выполнено"
