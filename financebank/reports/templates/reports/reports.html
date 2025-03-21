@@ -6,6 +6,7 @@
     {% elif selected_period == "year" %}год
     {% endif %}
 </h2>
+<button><a href="{% url 'import_csv' %}">aaa</a></button>
 
 <p><strong>Доход:</strong> {{ total_income }} руб.</p>
 <p><strong>Расход:</strong> {{ total_expense }} руб.</p>
