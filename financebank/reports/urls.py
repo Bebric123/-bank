@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import FinanceListView
+from .views import reports_view, export_csv
 
 urlpatterns = [
-    path('', FinanceListView.as_view(), name='reports_list'),
+    path("reports/", reports_view, name="reports"),
+    path("reports/export/", export_csv, name="export_csv"),
 ]

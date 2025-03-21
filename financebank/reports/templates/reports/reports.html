@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Отчет за 
+    {% if selected_period == "month" %}месяц
+    {% elif selected_period == "quarter" %}квартал
+    {% elif selected_period == "year" %}год
+    {% endif %}
+</h2>
+
+<p><strong>Доход:</strong> {{ total_income }} руб.</p>
+<p><strong>Расход:</strong> {{ total_expense }} руб.</p>
+<p><strong>Баланс:</strong> {{ balance }} руб.</p>
+
+<!-- Кнопки для выбора периода -->
+<a href="{% url 'reports' %}?period=month">За месяц</a> |
+<a href="{% url 'reports' %}?period=quarter">За квартал</a> |
+<a href="{% url 'reports' %}?period=year">За год</a>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Тип</th>
+            <th>Категория</th>
+            <th>Сумма</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.get_transaction_type_display }}</td>
+            <td>{{ transaction.category }}</td>
+            <td>{{ transaction.amount }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form action="{% url 'export_csv' %}" method="get">
+    <input type="hidden" name="period" value="{{ selected_period }}">
+    <button type="submit">Экспорт в CSV</button>
+</form>
+
+{% endblock %}
