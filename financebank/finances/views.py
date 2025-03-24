@@ -35,6 +35,6 @@ def finance_history(request):
     if category:
         records = records.filter(category=category)
     if start_date and end_date:
-        records = records.filter(transaction_date__range=[start_date, end_date])
+        records = records.filter(date__range=[start_date, end_date])
     
     return render(request, 'finances/history.html', {'records': records})

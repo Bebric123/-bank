@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <title>Главная</title>
+    <title>Document</title>
 </head>
 <body>
     <main class="container">
         <div class="form">
             <h1>Добро пожаловать в Financebank</h1>
+            <img src="{% static 'img/logo.png' %}" alt="img" width="200px" height="100px">
             <button class="btn"><p><a href="{% url 'login' %}">Продолжить</p></button>
         </div>
     </main>

@@ -1,20 +1,36 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h2>Финансовый учет</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Добавить</button>
-</form>
-
-<h3>История операций</h3>
-<button><a href="{% url 'finance_history' %}">ggg</a></button>
-<ul>
-    {% for transaction in transactions %}
-        <li>{{ transaction.date }} - {{ transaction.transaction_type }} - {{ transaction.amount }} - {{ transaction.category }}</li>
-    {% endfor %}
-</ul>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/homefinance.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <div class="form">
+            <h2>Финансовый учет</h2>
+            <form class="login" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn" type="submit">Добавить</button>
+            </form>
+        </div>
+        <div class="history">
+            <div class="con">
+                <h3>История операций</h3>
+                <p class="reg"><a href="{% url 'finance_history' %}">Подробнее</a></p>
+            </div>
+            <ul>
+                {% for transaction in transactions %}
+                    <li>{{ transaction.date }} - {{ transaction.transaction_type }} - {{ transaction.amount }} - {{ transaction.category }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
 {% endblock %}

@@ -1,19 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>{% block title %}Финансы{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav>
-            <a href="{% url 'finance_list' %}">Главная</a>
-            <a href="{% url 'profile' %}">Профиль</a>
-            <a href="{% url 'financial_goals' %}">Цели</a>
-            <a href="{% url 'create_goal' %}">Создать цель</a>
-            <a href="{% url 'analytics' %}">Аналитика</a>
-            <a href="{% url 'reports' %}">Аналитика</a>
+            <ul>
+                <img src="{% static 'img/logo.png' %}" alt="" width="100px" height="30px">
+                <div class="container-main">
+                    <li><a href="{% url 'finance_list' %}">Главная</a></li>
+                    <li><a href="{% url 'financial_goals' %}">Цели</a></li>
+                    <li><a href="{% url 'analytics' %}">Аналитика</a></li>
+                    <li><a href="{% url 'reports' %}">Отчеты</a></li>
+                    <li><a href="{% url 'profile' %}"><img src="https://avatars.mds.yandex.net/get-yapic/37154/3IuAEGdNqm1m7UBXbZ8wPyCblE-1/orig" alt="" width="30px" height="30px"></a></li>
+                </div>
+                
+            </ul>
         </nav>
     </header>
 
