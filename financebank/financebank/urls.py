@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 
 def redirect_to_dashboard(request):
-    return redirect("users/home")  
+    return redirect("users/login")  
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -18,7 +18,7 @@ urlpatterns = [
     path("goals/", include("goals.urls")),
     path("analytics/", include("analytics.urls")),
 
-    path("", redirect_to_dashboard), 
+    path("login/", redirect_to_dashboard), 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
