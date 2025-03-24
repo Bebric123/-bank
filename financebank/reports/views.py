@@ -63,7 +63,7 @@ def export_csv(request):
     response["Content-Disposition"] = f'attachment; filename="report_{period}.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(["Дата", "Тип", "Категория", "Сумма"])
+    writer.writerow(["date", "transaction_type", "category", "amount"])
 
     for transaction in transactions:
         writer.writerow([transaction.date, transaction.transaction_type, transaction.category, transaction.amount])

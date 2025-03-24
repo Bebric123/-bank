@@ -14,7 +14,7 @@ class FinancialGoal(models.Model):
     def progress(self):
         if self.target_amount == 0:
             return 0
-        return round((self.saved_amount / self.target_amount) * 100, 2)
+        return round((self.current_amount / self.target_amount) * 100, 2)
 
     def __str__(self):
         return f"{self.name} - {self.progress_percentage()}% выполнено"

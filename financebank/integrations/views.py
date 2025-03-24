@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ def import_csv(request):
         csv_file = request.FILES["csv_file"]
         decoded_file = csv_file.read().decode("utf-8").splitlines()
         reader = csv.DictReader(decoded_file)
+        print(f"Заголовки в CSV: {reader.fieldnames}")
 
         missing_columns = {"transaction_type", "category", "amount", "date"} - set(reader.fieldnames)
         if missing_columns:
@@ -23,8 +25,8 @@ def import_csv(request):
                     user=request.user,
                     transaction_type=row.get("transaction_type", "").strip().lower(),
                     category=row.get("category", "").strip(),
-                    amount=row.get("amount", 0),
-                    date=row.get("date", ""),
+                    amount=float(row.get("amount", 0)),
+                    date = datetime.fromisoformat(row["date"].strip()), 
                 )
                 records.append(record)
             except KeyError as e:

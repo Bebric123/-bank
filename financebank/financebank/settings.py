@@ -48,15 +48,18 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = "swooplida@gmail.com"
-EMAIL_HOST_PASSWORD = "jdti ywly qukx unos"
-CELERY_BROKER_URL = "redis://localhost:6379/0"
+EMAIL_HOST_USER = 'swooplida@gmail.com'
+EMAIL_HOST_PASSWORD = 'jdti ywly qukx unos' 
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,7 +108,6 @@ DATABASES = {
         }
     }
 }
-
 
 
 # Password validation
