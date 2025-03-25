@@ -1,22 +1,37 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h2>Профиль пользователя</h2>
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <h2>Профиль пользователя</h2>
+        
+        <div class="form">
+            <form class="login" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <label for="username">Имя пользователя:</label>
+                {{ user_form.username }}
     
-    <label for="username">Имя пользователя:</label>
-    {{ user_form.username }}
-
-    <label for="email">Email:</label>
-    {{ user_form.email }}
-
-    <label for="avatar">Аватар:</label>
-    <img src="{{ request.user.profile.avatar.url }}" alt="Аватар" width="100">
-    {{ profile_form.avatar }}
-
-    <button type="submit">Сохранить изменения</button>
-</form>
-
+                <label for="email">Email:</label>
+                {{ user_form.email }}
+    
+                <label for="avatar">Аватар:</label>
+                <img src="{{ request.user.profile.avatar.url }}" alt="Аватар" width="100">
+                {{ profile_form.avatar }}
+    
+                <button class="btn" type="submit">Сохранить изменения</button>
+            </form>
+        </div>
+        
+    </main>
+</body>
+</html>
 {% endblock %}
