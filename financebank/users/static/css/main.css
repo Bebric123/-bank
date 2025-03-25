@@ -20,7 +20,4 @@ li{
     gap:20px;
 }
 
-li:hover{
-    text-decoration: underline 2px solid rgba(14, 168, 185, 0.432);
-    transition: 550ms ease;
-}
+

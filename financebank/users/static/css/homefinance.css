@@ -30,7 +30,7 @@ a{
 .form{
     background-color: white;
     display: flex;
-    border-radius: 10px;
+    border-radius: 0px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
