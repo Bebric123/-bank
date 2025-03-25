@@ -1,13 +1,29 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h2>Создание финансовой цели</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/goals.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <div class="form">
+            <h2>Создание финансовой цели</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Создать</button>
-</form>
+            <form class="goals" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn" type="submit">Создать</button>
+            </form>
 
-<a href="{% url 'financial_goals' %}">Назад к списку</a>
+            <a class="reg" href="{% url 'financial_goals' %}">Назад к списку</a>
+        </div>
+    </main>
+</body>
+</html>
+
 {% endblock %}

@@ -9,6 +9,7 @@ def redirect_to_dashboard(request):
     return redirect("users/login")  
 
 urlpatterns = [
+    path('', include('users.urls')),
     path("admin/", admin.site.urls),
     path("finances/", include("finances.urls")),
     path("users/", include("users.urls")),

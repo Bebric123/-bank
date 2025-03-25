@@ -1,33 +1,46 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h2>Ваши финансовые цели</h2>
-<a href="{% url 'create_goal' %}">Создать новую цель</a>
-
-<ul>
-    {% for goal in goals %}
-        <li>
-            <strong>{{ goal.title }}</strong> - {{ goal.current_amount }} из {{ goal.target_amount }} ({{ goal.progress|floatformat:2 }}%)
-            <br> Срок: {{ goal.deadline }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/goals.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <div class="form">
+            <h2>Ваши финансовые цели</h2>
+            <ul>
+                {% for goal in goals %}
+                    <li class="go">
+                        <strong>{{ goal.title }}</strong> - {{ goal.current_amount }} из {{ goal.target_amount }} ({{ goal.progress|floatformat:2 }}%)
+                        <br> Срок: {{ goal.deadline }}
+                        
+                        <form class="goals" method="post" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <input type="hidden" name="goal_id" value="{{ goal.id }}">
+                            <input type="number" name="amount" step="0.01" min="0.01" placeholder="Сумма">
+                            <button class="btn" type="submit">Добавить</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <p>У вас пока нет финансовых целей.</p>
+                {% endfor %}
+            </ul>
             
-            <form method="post" style="margin-top: 10px;">
-                {% csrf_token %}
-                <input type="hidden" name="goal_id" value="{{ goal.id }}">
-                <input type="number" name="amount" step="0.01" min="0.01" placeholder="Сумма">
-                <button type="submit">Добавить</button>
-            </form>
-        </li>
-    {% empty %}
-        <p>У вас пока нет финансовых целей.</p>
-    {% endfor %}
-</ul>
-
-{% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}  
+            <button class="btn"><a href="{% url 'create_goal' %}">Создать новую цель</a></button>
+        </div>
+    </main>
+</body>
+</html>
 {% endblock %}
