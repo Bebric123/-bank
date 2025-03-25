@@ -9,15 +9,19 @@
     font-variation-settings: "wdth" 100;
 }
 
-.container{
+a{
+    color:black;
+    text-decoration: none;
+}
+
+.container-history{
     background-image: url("https://i.pinimg.com/originals/3d/47/3d/3d473d62a4ae61373ed56067f00dba03.gif");
     background-repeat:initial;
     background-size: 100vw 110vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 100vh;
-    
 }
 
 .form{
@@ -30,6 +34,11 @@
     padding: 35px;
     gap:30px;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.443);
+    margin-bottom: 20px;
+}
+
+.btn p{
+    font-size: 20px;
 }
 
 .btn{
@@ -46,45 +55,49 @@
     transition: 550ms ease;
 }
 
-a{
-    text-decoration: none;
-    color:black;
-}
-
 ul{
     list-style: none;
 }
 
-.go{
-    padding-bottom: 10px;
-}
-
-.goals input{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding: 5px;
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 10px;
-}
-
-.goals2 input{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding: 5px;
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 10px;
-}
-
-.reg{
-    text-decoration: underline 1px rgba(0, 0, 0, 0.438);
-    font-size: 16px;
-}
-
-.goals2{
+.con{
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    gap:10px;
+    margin-bottom: 10px;
+    flex-direction: column ;
+}
+
+.con2{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin-bottom: 10px;
+}
+
+.login input{
+    margin-top: 5px;
+    padding: 5px;
+    background-color: rgb(152, 197, 228);
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.443);
+}
+.form table {
+    max-height: 400px;
+    overflow-y: auto; 
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
