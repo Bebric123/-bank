@@ -124,12 +124,12 @@ thead {
     background-color: white;
 }
 .history {
-    max-height: 300px; /* Ограничение высоты */
-    overflow-y: auto; /* Вертикальная прокрутка */
-    background-color: white;
+    max-height: 300px;
+    overflow-y: auto; 
+    /* background-color: white; */
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.443);
+    /* box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.443); */
     width: 90%;
     max-width: 500px;
 }

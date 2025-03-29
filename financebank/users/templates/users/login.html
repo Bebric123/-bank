@@ -15,6 +15,11 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn2" type="submit">Войти</button>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
             </form>
             <p class="text">Нет аккаунта? <a class="reg" href="{% url 'register' %}">Зарегистрироваться</a></p>
         </div>

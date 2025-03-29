@@ -42,7 +42,6 @@ def reports_view(request):
 
 @login_required
 def export_csv(request):
-    """Экспорт данных в CSV"""
     user = request.user
     period = request.GET.get("period", "month")
     today = datetime.date.today()
